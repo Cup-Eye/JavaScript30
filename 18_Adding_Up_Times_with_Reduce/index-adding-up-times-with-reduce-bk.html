@@ -185,7 +185,7 @@
 
   const timeNodes = Array.from(document.querySelectorAll('[data-time]'));
 
-  /*Array.from used to convert timeNodes from a node list into an actual array*/
+  /*Array.from used to convert timeNodes from a node list into an array*/
 
   const seconds = timeNodes
     .map(node => node.dataset.time)
@@ -193,6 +193,7 @@
       const [mins, secs] = timeCode.split(':').map(parseFloat);
       return (mins*60) + secs;
     })
+    .reduce((total, vidSeconds) => total + vidSeconds)
 
 
 
