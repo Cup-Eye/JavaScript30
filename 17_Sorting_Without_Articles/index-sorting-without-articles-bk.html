@@ -49,6 +49,7 @@
 
   const bands = ['The Plot in You', 'The Devil Wears Prada', 'Pierce the Veil', 'Norma Jean', 'The Bled', 'Say Anything', 'The Midway State', 'We Came as Romans', 'Counterparts', 'Oh, Sleeper', 'A Skylit Drive', 'Anywhere But Here', 'An Old Dog'];
 
+  /* One (long) way to do it -->
 
   const compare = function(a, b) {
   let aTitle = a.toLowerCase(),
@@ -57,25 +58,31 @@
   aTitle = removeArticles(aTitle);
   bTitle = removeArticles(bTitle);
 
-
   if (aTitle > bTitle) return 1;
   if (aTitle < bTitle) return -1;
   return 0;
 };
 
 function removeArticles(str) {
-  words = str.split(" ");
+  const words = str.split(" ");
   if(words.length <= 1) return str;
   if( words[0] == 'a' || words[0] == 'the' || words[0] == 'an' )
     return words.splice(1).join(" ");
   return str;
 }
-
-
-
   const sortedBands = bands.sort(compare);
 
-  console.log(bands);
+  console.log(bands); */
+
+  function strip(bandName) {
+    return bandName.replace(/^(a |the |an )/i, '').trim();
+  }
+
+  const sortedBands = bands.sort((a, b) => strip(a) > strip(b) ? 1 : -1);
+
+  console.log(sortedBands);
+
+
 
 
 </script>
